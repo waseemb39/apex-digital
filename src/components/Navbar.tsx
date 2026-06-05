@@ -32,13 +32,19 @@ export default function Navbar() {
             <Link href="/about" className="hover:text-blue-600 transition-colors">
               About
             </Link>
-            <Link href="/contact" className="hover:text-blue-600 transition-colors">
-              Contact
+            <Link href="/portal" className="hover:text-blue-600 transition-colors">
+              Client Portal
             </Link>
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-3">
+            <Link
+              href="/get-started"
+              className="inline-flex items-center px-4 py-2.5 border border-blue-600 text-blue-600 text-sm font-semibold rounded-lg hover:bg-blue-50 transition-colors"
+            >
+              Get Started
+            </Link>
             <a
               href={BOOK_CALL_LINK}
               className="inline-flex items-center px-5 py-2.5 bg-orange-600 text-white text-sm font-semibold rounded-lg hover:bg-orange-700 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
@@ -74,6 +80,20 @@ export default function Navbar() {
             onClick={() => setMenuOpen(false)}
           >
             About
+          </Link>
+          <Link
+            href="/portal"
+            className="text-slate-700 font-medium"
+            onClick={() => setMenuOpen(false)}
+          >
+            Client Portal
+          </Link>
+          <Link
+            href="/get-started"
+            className="text-blue-600 font-semibold"
+            onClick={() => setMenuOpen(false)}
+          >
+            Get Started
           </Link>
           <Link
             href="/contact"
