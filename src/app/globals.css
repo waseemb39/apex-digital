@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --brand-green: #16A34A;   /* Primary — growth / grafting */
-  --brand-navy:  #0F172A;   /* Strategic base — tech / reliability */
-  --brand-orange: #EA580C;  /* CTA accent — spatial advancement */
-  --background: #F9FAFB;    /* Light neutral gray — high value contrast */
+  --brand-green: #16A34A;
+  --brand-navy:  #0F172A;
+  --brand-orange: #EA580C;
+  --background: #F9FAFB;
   --foreground: #0F172A;
 }
 
@@ -22,4 +22,30 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #4ade80 0%, #34d399 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient text — orange variant for CTAs */
+.gradient-text-orange {
+  background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Noise texture overlay for depth */
+.noise-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  border-radius: inherit;
 }
