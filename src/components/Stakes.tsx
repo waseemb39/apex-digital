@@ -1,4 +1,4 @@
-// Owner: Content Manager | Purpose: Stakes — clarifies cost of inaction (under 20 words, not fear-mongering)
+﻿// Owner: Content Manager | Purpose: Stakes â€” clarifies cost of inaction (under 20 words, not fear-mongering)
 const BOOK_CALL_LINK = "#contact";
 
 export default function Stakes() {
@@ -15,9 +15,10 @@ export default function Stakes() {
           href={BOOK_CALL_LINK}
           className="inline-flex items-center px-8 py-4 bg-orange-600 text-white font-bold text-base rounded-lg hover:bg-orange-700 transition-colors"
         >
-          Book Your Free Strategy Call — It&apos;s Free
+          Book Your Free Strategy Call â€” It&apos;s Free
         </a>
       </div>
     </section>
   );
 }
+

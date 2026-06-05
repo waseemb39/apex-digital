@@ -1,8 +1,8 @@
-// Owner: Content Manager | Purpose: Empathy + authority — positions us as Yoda (guide), not Luke (hero)
+﻿// Owner: Content Manager | Purpose: Empathy + authority â€” positions us as Yoda (guide), not Luke (hero)
 const stats = [
   { value: "100+", label: "Small businesses served" },
   { value: "90", label: "Days to measurable results" },
-  { value: "2×", label: "Average lead increase" },
+  { value: "2Ã—", label: "Average lead increase" },
   { value: "98%", label: "Client satisfaction rate" },
 ];
 
@@ -13,7 +13,7 @@ export default function Guide() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left: Empathy + story */}
           <div>
-            <p className="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-4">
+            <p className="text-xs font-semibold text-green-600 uppercase tracking-wider mb-4">
               We Understand
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
@@ -21,13 +21,13 @@ export default function Guide() {
               where you are right now.
             </h2>
             <p className="text-slate-600 leading-relaxed mb-6">
-              That&apos;s why we built Graft Digital — not to sell you a website,
+              That&apos;s why we built Graft Digital â€” not to sell you a website,
               but to build you a system. A system that generates leads while you
               focus on what you do best: running your business.
             </p>
             <p className="text-slate-600 leading-relaxed">
               We combine StoryBrand messaging, conversion-focused design, and
-              data-driven marketing to give you a predictable pipeline —
+              data-driven marketing to give you a predictable pipeline â€”
               regardless of the season, the referrals, or the algorithm.
             </p>
           </div>
@@ -39,7 +39,7 @@ export default function Guide() {
                 key={stat.label}
                 className="bg-slate-50 rounded-xl p-6 border border-slate-200 text-center"
               >
-                <div className="text-4xl font-extrabold text-blue-600 mb-2">
+                <div className="text-4xl font-extrabold text-green-600 mb-2">
                   {stat.value}
                 </div>
                 <div className="text-sm text-slate-600 font-medium">{stat.label}</div>
@@ -51,3 +51,4 @@ export default function Guide() {
     </section>
   );
 }
+

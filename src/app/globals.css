@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --navy: #0F172A;
-  --blue: #2563EB;
-  --orange: #EA580C;
-  --background: #ffffff;
+  --brand-green: #16A34A;   /* Primary — growth / grafting */
+  --brand-navy:  #0F172A;   /* Strategic base — tech / reliability */
+  --brand-orange: #EA580C;  /* CTA accent — spatial advancement */
+  --background: #F9FAFB;    /* Light neutral gray — high value contrast */
   --foreground: #0F172A;
 }
 

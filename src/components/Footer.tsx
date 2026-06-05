@@ -1,4 +1,4 @@
-// Owner: Website Owner | Purpose: Site footer — repeated CTA, navigation, legal links, trust signals
+﻿// Owner: Website Owner | Purpose: Site footer â€” repeated CTA, navigation, legal links, trust signals
 import Link from "next/link";
 
 const BOOK_CALL_LINK = "#contact";
@@ -20,7 +20,7 @@ export default function Footer() {
             Ready to fill your calendar?
           </h2>
           <p className="text-slate-400 mb-8 max-w-lg mx-auto">
-            Book your free 30-minute strategy call. No pitch, no pressure — just a
+            Book your free 30-minute strategy call. No pitch, no pressure â€” just a
             clear plan for getting more leads.
           </p>
           <a
@@ -35,7 +35,7 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           {/* Logo */}
           <Link href="/" className="text-xl font-bold">
-            Graft<span className="text-blue-400">Digital</span>
+            Graft<span className="text-green-400">Digital</span>
           </Link>
 
           {/* Links */}
@@ -53,10 +53,11 @@ export default function Footer() {
 
           {/* Copyright */}
           <p className="text-slate-500 text-sm text-center sm:text-right">
-            © {new Date().getFullYear()} Graft Digital. All rights reserved.
+            Â© {new Date().getFullYear()} Graft Digital. All rights reserved.
           </p>
         </div>
       </div>
     </footer>
   );
 }
+

@@ -1,9 +1,9 @@
-// Owner: Content Manager | Purpose: Paints life after working with us — sensory, specific, customer-focused
+﻿// Owner: Content Manager | Purpose: Paints life after working with us â€” sensory, specific, customer-focused
 const outcomes = [
-  { icon: "📅", text: "A calendar full of qualified discovery calls — booked automatically" },
-  { icon: "💬", text: "Leads who already know, like, and trust you before they call" },
-  { icon: "📊", text: "A clear dashboard showing exactly where every lead came from" },
-  { icon: "😌", text: "Freedom to focus on your craft, not chasing the next client" },
+  { icon: "ðŸ“…", text: "A calendar full of qualified discovery calls â€” booked automatically" },
+  { icon: "ðŸ’¬", text: "Leads who already know, like, and trust you before they call" },
+  { icon: "ðŸ“Š", text: "A clear dashboard showing exactly where every lead came from" },
+  { icon: "ðŸ˜Œ", text: "Freedom to focus on your craft, not chasing the next client" },
 ];
 
 export default function SuccessVision() {
@@ -12,11 +12,11 @@ export default function SuccessVision() {
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <p className="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-4">
+            <p className="text-xs font-semibold text-green-600 uppercase tracking-wider mb-4">
               Your New Normal
             </p>
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
-              Imagine waking up to a full calendar — every single Monday.
+              Imagine waking up to a full calendar â€” every single Monday.
             </h2>
             <p className="text-slate-600 leading-relaxed mb-8">
               No more cold outreach. No more wondering where the next client
@@ -24,7 +24,7 @@ export default function SuccessVision() {
               what you offer, showing up in your inbox and booking your calls.
             </p>
             <p className="text-slate-600 leading-relaxed">
-              That&apos;s not a fantasy — it&apos;s what our clients experience within
+              That&apos;s not a fantasy â€” it&apos;s what our clients experience within
               90 days of turning on their Graft Digital system.
             </p>
           </div>
@@ -45,3 +45,4 @@ export default function SuccessVision() {
     </section>
   );
 }
+

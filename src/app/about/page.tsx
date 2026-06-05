@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "About Us — Graft Digital",
+  title: "About Us â€” Graft Digital",
   description:
     "We're a team of digital marketers obsessed with one thing: getting small businesses more qualified leads.",
 };
@@ -21,7 +21,7 @@ export default function AboutPage() {
             </h1>
             <p className="text-slate-300 text-lg leading-relaxed">
               Graft Digital was built for business owners who are exceptional at
-              what they do — but tired of losing clients to competitors who are
+              what they do â€” but tired of losing clients to competitors who are
               just better at marketing.
             </p>
           </div>
@@ -36,7 +36,7 @@ export default function AboutPage() {
                 <p className="text-slate-600 leading-relaxed mb-4">
                   We exist to level the playing field. Big brands have marketing
                   departments. You have us. We bring enterprise-grade strategy to
-                  small businesses — without the enterprise price tag.
+                  small businesses â€” without the enterprise price tag.
                 </p>
                 <p className="text-slate-600 leading-relaxed">
                   We don&apos;t just build websites. We build systems: messaging
@@ -53,7 +53,7 @@ export default function AboutPage() {
                 </p>
                 <p className="text-slate-600 leading-relaxed">
                   Everything we build is documented, owned by you, and designed
-                  to run without us — because that&apos;s what a real system looks like.
+                  to run without us â€” because that&apos;s what a real system looks like.
                 </p>
               </div>
             </div>
@@ -68,12 +68,12 @@ export default function AboutPage() {
             </h2>
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
               {[
-                { icon: "🎯", title: "Clarity over cleverness", body: "Simple, clear messaging beats clever copy every time." },
-                { icon: "📐", title: "Systems, not heroics", body: "If it only works when we're involved, it's not a system." },
-                { icon: "📊", title: "Measure everything", body: "Every decision is backed by data, not gut feel." },
-                { icon: "🤝", title: "Client success first", body: "We only win when our clients win. Full stop." },
-                { icon: "⚡", title: "Speed and iteration", body: "Launch fast, learn fast, improve continuously." },
-                { icon: "🔒", title: "Radical transparency", body: "You own your data, your accounts, and your results." },
+                { icon: "ðŸŽ¯", title: "Clarity over cleverness", body: "Simple, clear messaging beats clever copy every time." },
+                { icon: "ðŸ“", title: "Systems, not heroics", body: "If it only works when we're involved, it's not a system." },
+                { icon: "ðŸ“Š", title: "Measure everything", body: "Every decision is backed by data, not gut feel." },
+                { icon: "ðŸ¤", title: "Client success first", body: "We only win when our clients win. Full stop." },
+                { icon: "âš¡", title: "Speed and iteration", body: "Launch fast, learn fast, improve continuously." },
+                { icon: "ðŸ”’", title: "Radical transparency", body: "You own your data, your accounts, and your results." },
               ].map((value) => (
                 <div key={value.title} className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
                   <div className="text-3xl mb-3">{value.icon}</div>
@@ -86,7 +86,7 @@ export default function AboutPage() {
         </section>
 
         {/* CTA */}
-        <section className="bg-blue-600 py-16 px-4 sm:px-6 lg:px-8">
+        <section className="bg-green-700 py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
               Ready to work with a team that&apos;s obsessed with your results?
@@ -104,3 +104,5 @@ export default function AboutPage() {
     </>
   );
 }
+
+

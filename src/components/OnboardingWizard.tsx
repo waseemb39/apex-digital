@@ -1,14 +1,14 @@
-// Owner: Website Owner | Purpose: First-time client intake wizard — 5 steps, saves to localStorage
+﻿// Owner: Website Owner | Purpose: First-time client intake wizard â€” 5 steps, saves to localStorage
 "use client";
 
 import { useState } from "react";
 
-// ─── Service definitions with branched questions ──────────────────────────────
+// â”€â”€â”€ Service definitions with branched questions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const SERVICES = [
   {
     id: "seo",
     label: "SEO Campaign",
-    icon: "🔍",
+    icon: "ðŸ”",
     tagline: "Rank higher on Google and get consistent organic traffic",
     color: "blue",
     questions: [
@@ -19,8 +19,8 @@ const SERVICES = [
       { id: "previous", label: "Have you done SEO before?", type: "radio",
         options: ["Yes, with an agency", "Yes, in-house", "No, this is our first time"] },
       { id: "tools", label: "Do you have Google Analytics & Search Console?", type: "radio",
-        options: ["Yes, both are set up", "Only one of them", "Neither — need to set up"] },
-      { id: "competitors", label: "Name 1–3 competitors currently outranking you", type: "text",
+        options: ["Yes, both are set up", "Only one of them", "Neither â€” need to set up"] },
+      { id: "competitors", label: "Name 1â€“3 competitors currently outranking you", type: "text",
         placeholder: "e.g. competitor.com, another-rival.com..." },
       { id: "timeline", label: "What's your expected timeline for results?", type: "radio",
         options: ["3 months", "6 months", "12 months", "I'm flexible"] },
@@ -29,7 +29,7 @@ const SERVICES = [
   {
     id: "ppc",
     label: "PPC Advertising",
-    icon: "💰",
+    icon: "ðŸ’°",
     tagline: "More qualified leads from paid ad campaigns",
     color: "red",
     questions: [
@@ -38,7 +38,7 @@ const SERVICES = [
       { id: "platforms", label: "Which platforms are you interested in?", type: "checkbox",
         options: ["Google Search", "Google Display / Shopping", "Meta (Facebook/Instagram)", "Microsoft Ads"] },
       { id: "audience", label: "Describe your ideal customer", type: "text",
-        placeholder: "e.g. homeowners aged 35–55 in Manchester, interested in home renovation" },
+        placeholder: "e.g. homeowners aged 35â€“55 in Manchester, interested in home renovation" },
       { id: "previous", label: "Have you run paid ads before?", type: "radio",
         options: ["Yes, with good results", "Yes, but results were poor", "Never run paid ads"] },
       { id: "landing_page", label: "Do you have a dedicated landing page?", type: "radio",
@@ -48,19 +48,19 @@ const SERVICES = [
   {
     id: "web",
     label: "Website Build",
-    icon: "🖥️",
+    icon: "ðŸ–¥ï¸",
     tagline: "A professional website that converts visitors into clients",
     color: "yellow",
     questions: [
       { id: "type", label: "What type of project is this?", type: "radio",
         options: ["Brand new website", "Redesign of existing site", "Add pages to current site", "E-commerce store"] },
       { id: "pages", label: "How many pages do you need roughly?", type: "radio",
-        options: ["1–3 pages (landing page)", "4–8 pages (standard site)", "9–15 pages (large site)", "15+ pages"] },
+        options: ["1â€“3 pages (landing page)", "4â€“8 pages (standard site)", "9â€“15 pages (large site)", "15+ pages"] },
       { id: "cms", label: "Any CMS preference?", type: "radio",
         options: ["WordPress", "Shopify (e-commerce)", "Next.js / custom build", "No preference"] },
       { id: "brand", label: "Do you have brand assets ready?", type: "radio",
-        options: ["Yes — logo, colors, and fonts all ready", "Logo only", "Nothing yet — need full branding"] },
-      { id: "inspiration", label: "Share 1–3 sites you love the look of", type: "text",
+        options: ["Yes â€” logo, colors, and fonts all ready", "Logo only", "Nothing yet â€” need full branding"] },
+      { id: "inspiration", label: "Share 1â€“3 sites you love the look of", type: "text",
         placeholder: "e.g. apple.com, stripe.com, linear.app" },
       { id: "features", label: "Special features needed?", type: "checkbox",
         options: ["Contact / booking form", "E-commerce / payments", "Members-only area", "CRM / chat integration"] },
@@ -69,7 +69,7 @@ const SERVICES = [
   {
     id: "social",
     label: "Social Media",
-    icon: "📱",
+    icon: "ðŸ“±",
     tagline: "Grow your audience and turn followers into paying clients",
     color: "purple",
     questions: [
@@ -82,16 +82,16 @@ const SERVICES = [
       { id: "video", label: "Do you need video content (Reels / TikTok)?", type: "radio",
         options: ["Yes, video is essential", "Static posts only", "Both video and static posts"] },
       { id: "brand", label: "Is your brand kit ready?", type: "radio",
-        options: ["Yes — logo, colors, and fonts", "Partially", "Not yet"] },
+        options: ["Yes â€” logo, colors, and fonts", "Partially", "Not yet"] },
     ],
   },
 ];
 
 const BUDGET_OPTIONS = [
-  "Under £500 / month",
-  "£500–£1,500 / month",
-  "£1,500–£5,000 / month",
-  "£5,000+ / month",
+  "Under Â£500 / month",
+  "Â£500â€“Â£1,500 / month",
+  "Â£1,500â€“Â£5,000 / month",
+  "Â£5,000+ / month",
   "Let's discuss based on goals",
 ];
 
@@ -103,7 +103,7 @@ const HEAR_OPTIONS = [
   "Other",
 ];
 
-// ─── Types ───────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 type Answers = Record<string, string | string[]>;
 
 type WizardData = {
@@ -125,9 +125,9 @@ const EMPTY: WizardData = {
   industry: "", service: "", serviceAnswers: {}, budget: "", heardFrom: "", notes: "",
 };
 
-// ─── Small helpers ────────────────────────────────────────────────────────────
+// â”€â”€â”€ Small helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function inputCls(err?: string) {
-  return `w-full px-4 py-3 border rounded-lg text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+  return `w-full px-4 py-3 border rounded-lg text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent ${
     err ? "border-red-400 bg-red-50" : "border-slate-300"
   }`;
 }
@@ -152,12 +152,12 @@ function RadioOption({ name, value, checked, onChange, label }: {
 }) {
   return (
     <label className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all text-sm ${
-      checked ? "border-blue-500 bg-blue-50 text-blue-900" : "border-slate-200 bg-white text-slate-700 hover:border-slate-300"
+      checked ? "border-green-500 bg-green-50 text-green-900" : "border-slate-200 bg-white text-slate-700 hover:border-slate-300"
     }`}>
       <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
-        checked ? "border-blue-600" : "border-slate-300"
+        checked ? "border-green-600" : "border-slate-300"
       }`}>
-        {checked && <div className="w-2 h-2 rounded-full bg-blue-600" />}
+        {checked && <div className="w-2 h-2 rounded-full bg-green-600" />}
       </div>
       <input type="radio" name={name} value={value} className="sr-only" checked={checked} onChange={onChange} />
       {label}
@@ -170,12 +170,12 @@ function CheckOption({ checked, onChange, label }: {
 }) {
   return (
     <label className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all text-sm ${
-      checked ? "border-blue-500 bg-blue-50 text-blue-900" : "border-slate-200 bg-white text-slate-700 hover:border-slate-300"
+      checked ? "border-green-500 bg-green-50 text-green-900" : "border-slate-200 bg-white text-slate-700 hover:border-slate-300"
     }`}>
       <div className={`w-4 h-4 rounded border-2 flex items-center justify-center flex-shrink-0 ${
-        checked ? "border-blue-600 bg-blue-600" : "border-slate-300"
+        checked ? "border-green-600 bg-green-600" : "border-slate-300"
       }`}>
-        {checked && <span className="text-white text-xs leading-none">✓</span>}
+        {checked && <span className="text-white text-xs leading-none">âœ“</span>}
       </div>
       <input type="checkbox" className="sr-only" checked={checked} onChange={onChange} />
       {label}
@@ -183,7 +183,7 @@ function CheckOption({ checked, onChange, label }: {
   );
 }
 
-// ─── Main wizard ─────────────────────────────────────────────────────────────
+// â”€â”€â”€ Main wizard â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export default function OnboardingWizard() {
   const [step, setStep] = useState(1);
   const [data, setData] = useState<WizardData>(EMPTY);
@@ -246,12 +246,12 @@ export default function OnboardingWizard() {
             <span>{progress}% complete</span>
           </div>
           <div className="h-1.5 bg-slate-200 rounded-full overflow-hidden">
-            <div className="h-full bg-blue-600 rounded-full transition-all duration-500" style={{ width: `${progress}%` }} />
+            <div className="h-full bg-green-600 rounded-full transition-all duration-500" style={{ width: `${progress}%` }} />
           </div>
         </div>
       )}
 
-      {/* ── STEP 1: Contact info ── */}
+      {/* â”€â”€ STEP 1: Contact info â”€â”€ */}
       {step === 1 && (
         <div className="space-y-6">
           <div>
@@ -289,7 +289,7 @@ export default function OnboardingWizard() {
         </div>
       )}
 
-      {/* ── STEP 2: Goal / service selection ── */}
+      {/* â”€â”€ STEP 2: Goal / service selection â”€â”€ */}
       {step === 2 && (
         <div className="space-y-6">
           <div>
@@ -305,15 +305,15 @@ export default function OnboardingWizard() {
                 onClick={() => set("service", svc.id)}
                 className={`text-left p-5 rounded-xl border-2 transition-all ${
                   data.service === svc.id
-                    ? "border-blue-600 bg-blue-50 shadow-sm"
-                    : "border-slate-200 bg-white hover:border-blue-200"
+                    ? "border-green-600 bg-green-50 shadow-sm"
+                    : "border-slate-200 bg-white hover:border-green-200"
                 }`}
               >
                 <div className="text-3xl mb-3">{svc.icon}</div>
                 <div className="font-bold text-slate-900 text-sm mb-1">{svc.label}</div>
                 <div className="text-xs text-slate-500 leading-relaxed">{svc.tagline}</div>
                 {data.service === svc.id && (
-                  <div className="mt-3 text-xs font-bold text-blue-600">✓ Selected</div>
+                  <div className="mt-3 text-xs font-bold text-green-600">âœ“ Selected</div>
                 )}
               </button>
             ))}
@@ -321,7 +321,7 @@ export default function OnboardingWizard() {
         </div>
       )}
 
-      {/* ── STEP 3: Service questions ── */}
+      {/* â”€â”€ STEP 3: Service questions â”€â”€ */}
       {step === 3 && selected && (
         <div className="space-y-8">
           <div>
@@ -339,7 +339,7 @@ export default function OnboardingWizard() {
                   onChange={(e) => setAnswer(q.id, e.target.value)}
                   rows={2}
                   placeholder={q.placeholder}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                  className="w-full px-4 py-3 border border-slate-300 rounded-lg text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 resize-none"
                 />
               )}
               {q.type === "radio" && (
@@ -365,11 +365,11 @@ export default function OnboardingWizard() {
         </div>
       )}
 
-      {/* ── STEP 4: Budget ── */}
+      {/* â”€â”€ STEP 4: Budget â”€â”€ */}
       {step === 4 && (
         <div className="space-y-8">
           <div>
-            <h2 className="text-2xl font-bold text-slate-900 mb-1">Almost done — budget & notes</h2>
+            <h2 className="text-2xl font-bold text-slate-900 mb-1">Almost done â€” budget & notes</h2>
             <p className="text-slate-500 text-sm">This helps us prepare a relevant proposal before your call.</p>
           </div>
 
@@ -389,7 +389,7 @@ export default function OnboardingWizard() {
               How did you hear about Graft Digital?
             </label>
             <select value={data.heardFrom} onChange={(e) => set("heardFrom", e.target.value)}
-              className="w-full px-4 py-3 border border-slate-300 rounded-lg text-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              className="w-full px-4 py-3 border border-slate-300 rounded-lg text-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
               <option value="">Select an option</option>
               {HEAR_OPTIONS.map((o) => <option key={o} value={o}>{o}</option>)}
             </select>
@@ -401,34 +401,34 @@ export default function OnboardingWizard() {
             </label>
             <textarea value={data.notes} onChange={(e) => set("notes", e.target.value)} rows={3}
               placeholder="Specific requirements, questions, context about your business..."
-              className="w-full px-4 py-3 border border-slate-300 rounded-lg text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" />
+              className="w-full px-4 py-3 border border-slate-300 rounded-lg text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 resize-none" />
           </div>
         </div>
       )}
 
-      {/* ── STEP 5: Success ── */}
+      {/* â”€â”€ STEP 5: Success â”€â”€ */}
       {step === 5 && (
         <div className="text-center py-8">
-          <div className="text-6xl mb-6">🎉</div>
+          <div className="text-6xl mb-6">ðŸŽ‰</div>
           <h2 className="text-3xl font-bold text-slate-900 mb-3">
             You&apos;re all set, {data.name.split(" ")[0]}!
           </h2>
           <p className="text-slate-600 mb-2 max-w-md mx-auto">
             We&apos;ll review your answers and be in touch within 1 business day to confirm your strategy call.
           </p>
-          <div className="bg-blue-50 border border-blue-200 rounded-xl p-5 mb-8 text-left max-w-sm mx-auto mt-6">
-            <p className="text-sm font-bold text-blue-800 mb-2">What happens next:</p>
-            <ul className="text-sm text-blue-700 space-y-1.5">
-              <li>✓ We review your intake answers</li>
-              <li>✓ We prepare a custom strategy outline</li>
-              <li>✓ We confirm your 30-min call time by email</li>
+          <div className="bg-green-50 border border-green-200 rounded-xl p-5 mb-8 text-left max-w-sm mx-auto mt-6">
+            <p className="text-sm font-bold text-green-800 mb-2">What happens next:</p>
+            <ul className="text-sm text-green-700 space-y-1.5">
+              <li>âœ“ We review your intake answers</li>
+              <li>âœ“ We prepare a custom strategy outline</li>
+              <li>âœ“ We confirm your 30-min call time by email</li>
             </ul>
           </div>
           <a
             href="/portal"
-            className="inline-flex items-center px-7 py-3.5 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-colors text-sm"
+            className="inline-flex items-center px-7 py-3.5 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition-colors text-sm"
           >
-            Access Your Client Portal →
+            Access Your Client Portal â†’
           </a>
           <p className="mt-4 text-xs text-slate-400">
             Use your portal to complete the detailed department questionnaire before your call.
@@ -442,18 +442,18 @@ export default function OnboardingWizard() {
           {step > 1 && (
             <button onClick={back}
               className="flex-1 py-3 border border-slate-300 rounded-lg text-slate-600 font-semibold text-sm hover:bg-slate-50 transition-colors">
-              ← Back
+              â† Back
             </button>
           )}
           {step < 4 ? (
             <button onClick={next}
-              className="flex-1 py-3 bg-blue-600 text-white font-bold text-sm rounded-lg hover:bg-blue-700 transition-colors">
-              Continue →
+              className="flex-1 py-3 bg-green-600 text-white font-bold text-sm rounded-lg hover:bg-green-700 transition-colors">
+              Continue â†’
             </button>
           ) : (
             <button onClick={finish}
               className="flex-1 py-3 bg-orange-600 text-white font-bold text-sm rounded-lg hover:bg-orange-700 transition-colors">
-              Submit & Book My Call →
+              Submit & Book My Call â†’
             </button>
           )}
         </div>
@@ -461,3 +461,4 @@ export default function OnboardingWizard() {
     </div>
   );
 }
+

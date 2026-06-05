@@ -1,4 +1,4 @@
-// Owner: Content Manager | Purpose: 3 client stories following Problem → Service → Result arc
+﻿// Owner: Content Manager | Purpose: 3 client stories following Problem â†’ Service â†’ Result arc
 // Replace placeholder testimonials with real client names, photos, and results before launch
 
 const testimonials = [
@@ -6,11 +6,11 @@ const testimonials = [
     name: "Sarah Mitchell",
     title: "Owner, Mitchell Plumbing Co.",
     avatar: "SM",
-    avatarColor: "bg-blue-600",
+    avatarColor: "bg-green-600",
     problem: "We were relying entirely on word-of-mouth and referrals were drying up.",
     result:
-      "Within 60 days of launching our new site, we had 3× more inbound calls and booked out 6 weeks in advance.",
-    metric: "3× more leads",
+      "Within 60 days of launching our new site, we had 3Ã— more inbound calls and booked out 6 weeks in advance.",
+    metric: "3Ã— more leads",
   },
   {
     name: "James Okafor",
@@ -39,11 +39,11 @@ export default function Testimonials() {
     <section className="bg-slate-50 py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
-          <p className="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-3">
+          <p className="text-xs font-semibold text-green-600 uppercase tracking-wider mb-3">
             Real Results
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900">
-            Business owners like you — getting results.
+            Business owners like you â€” getting results.
           </h2>
         </div>
 
@@ -55,7 +55,7 @@ export default function Testimonials() {
             >
               {/* Metric badge */}
               <div className="inline-flex self-start items-center bg-green-50 text-green-700 text-xs font-bold px-3 py-1.5 rounded-full mb-6 border border-green-200">
-                ✓ {testimonial.metric}
+                âœ“ {testimonial.metric}
               </div>
 
               {/* Problem */}
@@ -87,3 +87,4 @@ export default function Testimonials() {
     </section>
   );
 }
+

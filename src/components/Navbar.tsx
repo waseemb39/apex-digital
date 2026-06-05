@@ -1,4 +1,4 @@
-// Owner: Website Owner | Purpose: Site-wide navigation with primary CTA
+﻿// Owner: Website Owner | Purpose: Site-wide navigation with primary CTA
 "use client";
 
 import { useState } from "react";
@@ -18,7 +18,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-2">
             <div>
               <span className="text-xl font-bold text-slate-900">
-                Graft<span className="text-blue-600">Digital</span>
+                Graft<span className="text-green-600">Digital</span>
               </span>
               <p className="text-xs text-slate-400 leading-none mt-0.5 hidden sm:block">We connect. You grow.</p>
             </div>
@@ -26,13 +26,13 @@ export default function Navbar() {
 
           {/* Desktop nav links */}
           <div className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
-            <Link href="/services" className="hover:text-blue-600 transition-colors">
+            <Link href="/services" className="hover:text-green-600 transition-colors">
               Services
             </Link>
-            <Link href="/about" className="hover:text-blue-600 transition-colors">
+            <Link href="/about" className="hover:text-green-600 transition-colors">
               About
             </Link>
-            <Link href="/portal" className="hover:text-blue-600 transition-colors">
+            <Link href="/portal" className="hover:text-green-600 transition-colors">
               Client Portal
             </Link>
           </div>
@@ -41,7 +41,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             <Link
               href="/get-started"
-              className="inline-flex items-center px-4 py-2.5 border border-blue-600 text-blue-600 text-sm font-semibold rounded-lg hover:bg-blue-50 transition-colors"
+              className="inline-flex items-center px-4 py-2.5 border border-green-600 text-green-600 text-sm font-semibold rounded-lg hover:bg-green-50 transition-colors"
             >
               Get Started
             </Link>
@@ -90,7 +90,7 @@ export default function Navbar() {
           </Link>
           <Link
             href="/get-started"
-            className="text-blue-600 font-semibold"
+            className="text-green-600 font-semibold"
             onClick={() => setMenuOpen(false)}
           >
             Get Started
@@ -114,3 +114,4 @@ export default function Navbar() {
     </nav>
   );
 }
+

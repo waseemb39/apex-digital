@@ -1,4 +1,4 @@
-// Owner: Content Manager | Purpose: Email lead magnet — transitional CTA for visitors not ready to book
+﻿// Owner: Content Manager | Purpose: Email lead magnet â€” transitional CTA for visitors not ready to book
 // Connect the form action to your email marketing tool (Mailchimp, ConvertKit, etc.) before launch
 "use client";
 
@@ -18,9 +18,9 @@ export default function TransitionalCTA() {
   }
 
   return (
-    <section id={LEAD_GUIDE_ID} className="bg-blue-50 border-y border-blue-200 py-16 px-4 sm:px-6 lg:px-8">
+    <section id={LEAD_GUIDE_ID} className="bg-green-50 border-y border-green-200 py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto text-center">
-        <p className="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-3">
+        <p className="text-xs font-semibold text-green-600 uppercase tracking-wider mb-3">
           Free Resource
         </p>
         <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">
@@ -28,7 +28,7 @@ export default function TransitionalCTA() {
         </h2>
         <p className="text-slate-600 mb-8">
           The exact 7-step framework we use to double leads for small businesses
-          in 90 days — yours free.
+          in 90 days â€” yours free.
         </p>
 
         {submitted ? (
@@ -43,11 +43,11 @@ export default function TransitionalCTA() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email address"
-              className="flex-1 px-4 py-3 border border-slate-300 rounded-lg text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="flex-1 px-4 py-3 border border-slate-300 rounded-lg text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
             />
             <button
               type="submit"
-              className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
             >
               Send Me the Guide
             </button>
@@ -61,3 +61,4 @@ export default function TransitionalCTA() {
     </section>
   );
 }
+
