@@ -1,9 +1,9 @@
-﻿// Owner: Website Owner | Purpose: Returning client portal â€” sign-in by email, department questionnaires per service
+// Owner: Website Owner | Purpose: Returning client portal — sign-in by email, department questionnaires per service
 "use client";
 
 import { useState, useEffect } from "react";
 
-// â”€â”€â”€ Department questions per service â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// --- Department questions per service ---
 type Question = {
   id: string;
   label: string;
@@ -24,24 +24,24 @@ const DEPARTMENTS: Record<string, Department[]> = {
     {
       id: "technical",
       label: "Technical SEO",
-      icon: "âš™ï¸",
+      icon: "⚙️",
       questions: [
         { id: "cms", label: "What CMS is your website built on?", type: "radio",
           options: ["WordPress", "Shopify", "Wix / Squarespace", "Custom build / other"] },
         { id: "cms_access", label: "Can you provide CMS admin access?", type: "radio",
-          options: ["Yes â€” will share credentials securely", "Need to set up admin access", "Read-only access only"] },
+          options: ["Yes — will share credentials securely", "Need to set up admin access", "Read-only access only"] },
         { id: "known_issues", label: "Any known technical issues on the site?", type: "text",
           placeholder: "404 errors, slow pages, broken links, duplicate content..." },
         { id: "ssl", label: "Is your site on HTTPS?", type: "radio",
           options: ["Yes", "No", "Not sure"] },
         { id: "page_speed", label: "How would you rate your current page speed?", type: "radio",
-          options: ["Fast â€” loads in under 2 seconds", "Moderate â€” sometimes slow", "Slow â€” visitors complain", "Very slow / I don't know"] },
+          options: ["Fast — loads in under 2 seconds", "Moderate — sometimes slow", "Slow — visitors complain", "Very slow / I don't know"] },
       ],
     },
     {
       id: "content",
       label: "SEO Content",
-      icon: "âœï¸",
+      icon: "✏️",
       questions: [
         { id: "blog", label: "Do you currently have a blog?", type: "radio",
           options: ["Yes, publishing regularly", "Yes, but it's outdated", "No blog yet"] },
@@ -58,7 +58,7 @@ const DEPARTMENTS: Record<string, Department[]> = {
     {
       id: "analytics",
       label: "Analytics & Tracking",
-      icon: "ðŸ“Š",
+      icon: "📊",
       questions: [
         { id: "ga4", label: "Is Google Analytics 4 installed?", type: "radio",
           options: ["Yes, working correctly", "Old Universal Analytics only", "Not installed"] },
@@ -76,27 +76,27 @@ const DEPARTMENTS: Record<string, Department[]> = {
     {
       id: "campaign",
       label: "Campaign Setup",
-      icon: "ðŸŽ¯",
+      icon: "🎯",
       questions: [
         { id: "platforms_confirm", label: "Confirm which platforms to run ads on", type: "checkbox",
           options: ["Google Search", "Google Display", "Google Shopping", "Meta (Facebook/Instagram)", "Microsoft Ads"] },
         { id: "accounts", label: "Do you have existing ad accounts?", type: "radio",
-          options: ["Yes â€” will share access", "No â€” need to create new accounts", "Yes, but history is poor â€” create fresh"] },
+          options: ["Yes — will share access", "No — need to create new accounts", "Yes, but history is poor — create fresh"] },
         { id: "landing_urls", label: "Paste the landing page URL(s) ads should point to", type: "text",
           placeholder: "https://yourbusiness.com/service-page" },
         { id: "conversion_action", label: "Primary conversion action", type: "radio",
           options: ["Form submission / enquiry", "Phone call", "Product purchase", "App install"] },
         { id: "target_cpa", label: "Target cost per lead or sale (if known)", type: "text",
-          placeholder: "e.g. Â£20 per lead, Â£50 per sale â€” or leave blank if unsure" },
+          placeholder: "e.g. £20 per lead, £50 per sale — or leave blank if unsure" },
       ],
     },
     {
       id: "creative",
       label: "Ad Creative",
-      icon: "ðŸŽ¨",
+      icon: "🎨",
       questions: [
         { id: "brand_kit", label: "Is your brand kit ready?", type: "radio",
-          options: ["Yes â€” logo, colors, and fonts all ready", "Logo only", "Needs creating from scratch"] },
+          options: ["Yes — logo, colors, and fonts all ready", "Logo only", "Needs creating from scratch"] },
         { id: "product_images", label: "Do you have product or service images?", type: "radio",
           options: ["Yes, high-quality images ready", "Have images but need editing", "Need stock imagery"] },
         { id: "restrictions", label: "Any brand or ad content restrictions?", type: "text",
@@ -110,14 +110,14 @@ const DEPARTMENTS: Record<string, Department[]> = {
     {
       id: "tracking",
       label: "Tracking & Analytics",
-      icon: "ðŸ“ˆ",
+      icon: "📈",
       questions: [
         { id: "conv_tracking", label: "Is conversion tracking set up in your ad accounts?", type: "radio",
           options: ["Yes, working correctly", "Partially set up", "Not set up"] },
         { id: "crm", label: "What CRM do you use?", type: "text",
           placeholder: "e.g. HubSpot, Salesforce, Pipedrive, or none" },
         { id: "roas_target", label: "Target ROAS (for e-commerce)", type: "text",
-          placeholder: "e.g. 4Ã— = Â£4 revenue per Â£1 spent â€” leave blank if not e-commerce" },
+          placeholder: "e.g. 4× = £4 revenue per £1 spent — leave blank if not e-commerce" },
         { id: "report_to", label: "Who should receive weekly performance alerts?", type: "text",
           placeholder: "Name + email" },
       ],
@@ -128,9 +128,9 @@ const DEPARTMENTS: Record<string, Department[]> = {
     {
       id: "design",
       label: "Design",
-      icon: "ðŸŽ¨",
+      icon: "🎨",
       questions: [
-        { id: "inspiration", label: "Share 2â€“3 competitor or inspiration websites you love", type: "text",
+        { id: "inspiration", label: "Share 2–3 competitor or inspiration websites you love", type: "text",
           placeholder: "e.g. stripe.com, linear.app, squarespace.com" },
         { id: "dislikes", label: "What should the design absolutely NOT look like?", type: "text",
           placeholder: "Outdated, too corporate, too minimal, clashing colours..." },
@@ -145,7 +145,7 @@ const DEPARTMENTS: Record<string, Department[]> = {
     {
       id: "development",
       label: "Development",
-      icon: "âš™ï¸",
+      icon: "⚙️",
       questions: [
         { id: "current_url", label: "Current website URL (if redesign / migration)", type: "text",
           placeholder: "https://current-site.com" },
@@ -160,14 +160,14 @@ const DEPARTMENTS: Record<string, Department[]> = {
     {
       id: "content",
       label: "Content & Copy",
-      icon: "âœï¸",
+      icon: "✏️",
       questions: [
         { id: "existing_copy", label: "Do you have existing copy we can use or adapt?", type: "radio",
-          options: ["Yes â€” reviewed, approved, and ready to use", "Rough copy that needs rewriting", "Starting from scratch"] },
+          options: ["Yes — reviewed, approved, and ready to use", "Rough copy that needs rewriting", "Starting from scratch"] },
         { id: "product_info", label: "Can you provide product / service descriptions?", type: "radio",
           options: ["Yes, sending this week", "Need help writing them", "Partially have them"] },
         { id: "testimonials", label: "Do you have testimonials or case studies ready?", type: "radio",
-          options: ["Yes, 3 or more ready", "1â€“2 available", "Not yet"] },
+          options: ["Yes, 3 or more ready", "1–2 available", "Not yet"] },
         { id: "approver", label: "Who approves final copy before it goes live?", type: "text",
           placeholder: "Name + email" },
       ],
@@ -178,20 +178,20 @@ const DEPARTMENTS: Record<string, Department[]> = {
     {
       id: "access",
       label: "Platform Access",
-      icon: "ðŸ”‘",
+      icon: "🔑",
       questions: [
         { id: "instagram", label: "Instagram handle", type: "text", placeholder: "@yourbusiness" },
         { id: "tiktok", label: "TikTok handle", type: "text", placeholder: "@yourbusiness" },
         { id: "facebook", label: "Facebook page URL", type: "text", placeholder: "facebook.com/yourbusiness" },
         { id: "linkedin", label: "LinkedIn company page URL", type: "text", placeholder: "linkedin.com/company/yourbusiness" },
         { id: "followers", label: "Current follower counts (all platforms combined)", type: "text",
-          placeholder: "e.g. IG: 1,200 Â· TikTok: 400 Â· FB: 800" },
+          placeholder: "e.g. IG: 1,200 · TikTok: 400 · FB: 800" },
       ],
     },
     {
       id: "content",
       label: "Content Strategy",
-      icon: "ðŸ“‹",
+      icon: "📋",
       questions: [
         { id: "pillars", label: "Your 3 main content topics (pillars)", type: "text",
           placeholder: "e.g. Before & afters / Educational tips / Behind the scenes" },
@@ -208,22 +208,22 @@ const DEPARTMENTS: Record<string, Department[]> = {
     {
       id: "video",
       label: "Video Content",
-      icon: "ðŸŽ¬",
+      icon: "🎬",
       questions: [
         { id: "raw_footage", label: "Can you provide raw video footage?", type: "radio",
-          options: ["Yes, regularly from our team", "Occasionally", "No â€” need stock or animation only"] },
+          options: ["Yes, regularly from our team", "Occasionally", "No — need stock or animation only"] },
         { id: "testimonials", label: "Do you have video testimonials from clients?", type: "radio",
           options: ["Yes, ready to use", "Not yet, but we can film them", "No"] },
         { id: "video_length", label: "Preferred video length", type: "radio",
-          options: ["15 seconds (quick & punchy)", "30â€“60 seconds (standard Reel)", "60â€“90 seconds (detailed)", "Mix of lengths"] },
+          options: ["15 seconds (quick & punchy)", "30–60 seconds (standard Reel)", "60–90 seconds (detailed)", "Mix of lengths"] },
         { id: "audio", label: "OK to use trending audio / licensed music?", type: "radio",
-          options: ["Yes â€” use trending sounds", "Original / brand audio only", "No strong preference"] },
+          options: ["Yes — use trending sounds", "Original / brand audio only", "No strong preference"] },
       ],
     },
   ],
 };
 
-// â”€â”€â”€ Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// --- Types ---
 type Profile = {
   name: string;
   email: string;
@@ -234,7 +234,7 @@ type Profile = {
 
 type DeptAnswers = Record<string, Record<string, string | string[]>>;
 
-// â”€â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// --- Helpers ---
 function inputCls() {
   return "w-full px-4 py-3 border border-slate-600 rounded-lg bg-slate-800 text-slate-100 text-sm placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-green-500 resize-none";
 }
@@ -263,7 +263,7 @@ function CheckOpt({ checked, onChange, label }: { checked: boolean; onChange: ()
       <div className={`w-4 h-4 rounded border-2 flex items-center justify-center flex-shrink-0 ${
         checked ? "border-green-400 bg-green-500" : "border-slate-600"
       }`}>
-        {checked && <span className="text-white text-xs leading-none">âœ“</span>}
+        {checked && <span className="text-white text-xs leading-none">✓</span>}
       </div>
       <input type="checkbox" className="sr-only" checked={checked} onChange={onChange} />
       {label}
@@ -271,7 +271,7 @@ function CheckOpt({ checked, onChange, label }: { checked: boolean; onChange: ()
   );
 }
 
-// â”€â”€â”€ Sign-in screen â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// --- Sign-in screen ---
 function SignIn({ onSuccess }: { onSuccess: (profile: Profile) => void }) {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
@@ -292,7 +292,7 @@ function SignIn({ onSuccess }: { onSuccess: (profile: Profile) => void }) {
 
   return (
     <div className="max-w-md mx-auto text-center">
-      <div className="text-5xl mb-6">ðŸ”</div>
+      <div className="text-5xl mb-6">🔒</div>
       <h2 className="text-2xl font-bold text-white mb-2">Welcome back</h2>
       <p className="text-slate-400 text-sm mb-8">
         Enter the email you used when you first registered to access your portal.
@@ -313,19 +313,19 @@ function SignIn({ onSuccess }: { onSuccess: (profile: Profile) => void }) {
         onClick={handleSignIn}
         className="w-full py-3 bg-green-600 text-white font-bold text-sm rounded-lg hover:bg-green-700 transition-colors"
       >
-        Access My Portal â†’
+        Access My Portal →
       </button>
       <p className="mt-6 text-xs text-slate-500">
         New client?{" "}
         <a href="/get-started" className="text-green-400 hover:underline">
-          Start your onboarding here â†’
+          Start your onboarding here →
         </a>
       </p>
     </div>
   );
 }
 
-// â”€â”€â”€ Department questionnaire â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// --- Department questionnaire ---
 function DepartmentForm({
   dept,
   answers,
@@ -387,13 +387,13 @@ function DepartmentForm({
             : "bg-green-600 hover:bg-green-700 text-white"
         }`}
       >
-        {saved ? "âœ“ Saved" : "Save This Section â†’"}
+        {saved ? "✓ Saved" : "Save This Section →"}
       </button>
     </div>
   );
 }
 
-// â”€â”€â”€ Main portal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// --- Main portal ---
 export default function CustomerPortal() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [activeDept, setActiveDept] = useState(0);
@@ -457,7 +457,7 @@ export default function CustomerPortal() {
     return (
       <div className="min-h-screen bg-slate-900 flex items-center justify-center px-4">
         <div className="max-w-md text-center">
-          <div className="text-6xl mb-6">ðŸš€</div>
+          <div className="text-6xl mb-6">🚀</div>
           <h2 className="text-3xl font-bold text-white mb-3">All done, {profile.name.split(" ")[0]}!</h2>
           <p className="text-slate-400 mb-6">
             Your complete intake is now with our team. We&apos;ll review everything and confirm your strategy call details within 1 business day.
@@ -481,10 +481,10 @@ export default function CustomerPortal() {
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <a href="/" className="text-sm font-bold text-green-400 hover:text-green-300 mb-1 inline-block">
-              â† GraftDigital
+              ← GraftDigital
             </a>
             <h1 className="text-xl font-bold text-white">
-              {profile.businessName} â€” Client Portal
+              {profile.businessName} — Client Portal
             </h1>
             <p className="text-slate-400 text-xs mt-0.5">{profile.email}</p>
           </div>
@@ -506,7 +506,7 @@ export default function CustomerPortal() {
         <div className="inline-flex items-center gap-2 bg-slate-800 border border-slate-700 rounded-full px-4 py-2 text-sm mb-8">
           <span className="w-2 h-2 rounded-full bg-green-400" />
           <span className="text-slate-300 font-medium">Service: <strong className="text-white">{SERVICE_LABELS[profile.service]}</strong></span>
-          <span className="text-slate-500">Â·</span>
+          <span className="text-slate-500">·</span>
           <span className="text-slate-400">{completedCount}/{totalDepts} departments complete</span>
         </div>
 
@@ -528,7 +528,7 @@ export default function CustomerPortal() {
                 <div className="min-w-0">
                   <div className="text-xs font-bold truncate">{d.label}</div>
                   {savedDepts.has(d.id) && (
-                    <div className="text-xs text-green-400 mt-0.5">âœ“ Saved</div>
+                    <div className="text-xs text-green-400 mt-0.5">✓ Saved</div>
                   )}
                 </div>
               </button>
@@ -540,7 +540,7 @@ export default function CustomerPortal() {
                 onClick={submitAll}
                 className="lg:mt-4 px-4 py-3 bg-orange-600 hover:bg-orange-700 text-white font-bold text-sm rounded-xl transition-colors flex-shrink-0"
               >
-                Submit All â†’ ðŸš€
+                Submit All → 🚀
               </button>
             )}
           </div>
@@ -569,7 +569,7 @@ export default function CustomerPortal() {
                   onClick={() => setActiveDept((i) => i + 1)}
                   className="mt-4 w-full py-2.5 border border-slate-600 text-slate-300 text-sm font-medium rounded-lg hover:bg-slate-700 transition-colors"
                 >
-                  Next: {departments[activeDept + 1].label} â†’
+                  Next: {departments[activeDept + 1].label} →
                 </button>
               )}
             </div>
@@ -587,7 +587,7 @@ export default function CustomerPortal() {
               onClick={submitAll}
               className="px-7 py-3 bg-orange-600 text-white font-bold rounded-lg hover:bg-orange-700 transition-colors text-sm whitespace-nowrap"
             >
-              Submit to Graft Digital ðŸš€
+              Submit to Graft Digital 🚀
             </button>
           </div>
         )}
@@ -595,4 +595,3 @@ export default function CustomerPortal() {
     </div>
   );
 }
-

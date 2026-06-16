@@ -8,11 +8,11 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Graft Digital â€” We connect. You grow.",
+  title: "Graft Digital — We connect. You grow.",
   description:
-    "We help small business owners get more qualified leads in 90 days with a proven digital marketing system. Book your free strategy call today.",
+    "We help small business owners get more qualified leads in 90 days with a proven digital marketing system. Get started today.",
   openGraph: {
-    title: "Graft Digital â€” We connect. You grow.",
+    title: "Graft Digital — We connect. You grow.",
     description:
       "We help small business owners get more qualified leads in 90 days with a proven digital marketing system.",
     type: "website",

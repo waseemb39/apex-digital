@@ -1,7 +1,7 @@
 // Owner: Content Manager | Purpose: Stakes — clarifies cost of inaction (under 20 words, not fear-mongering)
 import { ArrowRight } from "lucide-react";
 
-const BOOK_CALL_LINK = "#contact";
+const GET_STARTED_LINK = "/get-started";
 
 export default function Stakes() {
   return (
@@ -19,10 +19,10 @@ export default function Stakes() {
           The clients who should be calling you are calling them.
         </p>
         <a
-          href={BOOK_CALL_LINK}
+          href={GET_STARTED_LINK}
           className="inline-flex items-center gap-2 px-8 py-4 bg-orange-600 text-white font-bold text-base rounded-xl hover:bg-orange-700 transition-all hover:shadow-lg hover:shadow-orange-600/30"
         >
-          Book Your Free Strategy Call — It&apos;s Free
+          Get Started — It&apos;s Free
           <ArrowRight size={18} />
         </a>
 

@@ -2,8 +2,7 @@
 import Link from "next/link";
 import { CheckCircle, ArrowRight, TrendingUp, Users, BarChart2 } from "lucide-react";
 
-const BOOK_CALL_LINK = "#contact";
-const LEAD_GUIDE_LINK = "#lead-guide";
+const GET_STARTED_LINK = "/get-started";
 
 const weeklyBars = [30, 45, 35, 60, 50, 75, 90];
 
@@ -64,20 +63,14 @@ export default function Hero() {
               not an empty inbox.
             </p>
 
-            {/* Dual CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-10">
+            {/* Primary CTA */}
+            <div className="mb-10">
               <a
-                href={BOOK_CALL_LINK}
+                href={GET_STARTED_LINK}
                 className="inline-flex justify-center items-center gap-2 px-8 py-4 bg-orange-600 text-white text-base font-bold rounded-xl hover:bg-orange-700 transition-all hover:shadow-lg hover:shadow-orange-600/25 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-slate-950"
               >
-                Book Your Free Strategy Call
+                Get Started
                 <ArrowRight size={18} />
-              </a>
-              <a
-                href={LEAD_GUIDE_LINK}
-                className="inline-flex justify-center items-center px-8 py-4 bg-transparent text-white text-base font-semibold rounded-xl border border-slate-600 hover:border-slate-400 hover:bg-white/5 transition-all"
-              >
-                Download the Free Lead Guide
               </a>
             </div>
 

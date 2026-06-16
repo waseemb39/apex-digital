@@ -1,51 +1,51 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Services â€” Graft Digital",
+  title: "Services — Graft Digital",
   description:
     "Digital marketing services for small businesses: websites, SEO, paid ads, email marketing, and conversion optimization.",
 };
 
 const services = [
   {
-    icon: "ðŸŒ",
+    icon: "🌐",
     title: "Website Design & Build",
     description:
       "StoryBrand-optimized websites built in Next.js. Fast, mobile-first, accessible, and designed to convert visitors into leads.",
-    outcomes: ["Passes the 5-second Grunt Test", "PageSpeed â‰¥ 90 on mobile", "Fully documented for your team"],
+    outcomes: ["Passes the 5-second Grunt Test", "PageSpeed ≥ 90 on mobile", "Fully documented for your team"],
   },
   {
-    icon: "ðŸ“£",
+    icon: "📣",
     title: "Brand Messaging & Copywriting",
     description:
       "We clarify your message using the StoryBrand SB7 framework so every visitor immediately understands what you offer and why it matters.",
     outcomes: ["Complete BrandScript", "Homepage copy", "Email sequence copy"],
   },
   {
-    icon: "ðŸ”",
+    icon: "🔍",
     title: "SEO & Content Strategy",
     description:
       "Rank for the keywords your ideal clients are searching. We build the technical foundation and content strategy to drive organic traffic.",
     outcomes: ["Technical SEO audit & fix", "Keyword strategy", "Monthly content plan"],
   },
   {
-    icon: "ðŸ’°",
+    icon: "💰",
     title: "Paid Advertising (Google & Meta)",
     description:
-      "High-converting ad campaigns with clear attribution. Know exactly which ads bring in clients â€” and which ones to kill.",
+      "High-converting ad campaigns with clear attribution. Know exactly which ads bring in clients — and which ones to kill.",
     outcomes: ["Full funnel build", "Weekly reporting", "Cost-per-lead tracking"],
   },
   {
-    icon: "ðŸ“§",
+    icon: "📧",
     title: "Email Marketing & Automation",
     description:
       "Nurture sequences, lead magnets, and automated follow-ups that turn cold leads into warm appointments while you sleep.",
     outcomes: ["Lead magnet creation", "Welcome sequence", "Booking confirmation flow"],
   },
   {
-    icon: "ðŸ“Š",
+    icon: "📊",
     title: "Analytics & Reporting",
     description:
       "GA4, Google Tag Manager, and Meta Pixel installed and configured. A weekly scorecard so you always know your numbers.",
@@ -65,7 +65,7 @@ export default function ServicesPage() {
               Everything you need to turn your website into a lead machine.
             </h1>
             <p className="text-slate-300 text-lg">
-              A complete digital marketing system â€” not a collection of disconnected tactics.
+              A complete digital marketing system — not a collection of disconnected tactics.
             </p>
           </div>
         </section>
@@ -85,7 +85,7 @@ export default function ServicesPage() {
                   <ul className="space-y-2">
                     {service.outcomes.map((outcome) => (
                       <li key={outcome} className="flex items-center gap-2 text-sm text-slate-700">
-                        <span className="text-green-600 font-bold">âœ“</span>
+                        <span className="text-green-600 font-bold">✓</span>
                         {outcome}
                       </li>
                     ))}
@@ -103,13 +103,13 @@ export default function ServicesPage() {
               Not sure which service you need?
             </h2>
             <p className="text-green-100 mb-8">
-              Book a free call. We&apos;ll diagnose the gaps and tell you exactly where to start.
+              Get started below. We&apos;ll diagnose the gaps and tell you exactly where to start.
             </p>
             <a
-              href="/#contact"
+              href="/get-started"
               className="inline-flex items-center px-8 py-4 bg-orange-600 text-white font-bold rounded-lg hover:bg-orange-700 transition-colors"
             >
-              Book Your Free Strategy Call
+              Get Started
             </a>
           </div>
         </section>
@@ -118,5 +118,3 @@ export default function ServicesPage() {
     </>
   );
 }
-
-

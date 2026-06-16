@@ -22,7 +22,7 @@ const steps = [
   },
 ];
 
-const BOOK_CALL_LINK = "#contact";
+const GET_STARTED_LINK = "/get-started";
 
 export default function ProvenProcess() {
   return (
@@ -88,10 +88,10 @@ export default function ProvenProcess() {
         {/* CTA */}
         <div className="text-center">
           <a
-            href={BOOK_CALL_LINK}
+            href={GET_STARTED_LINK}
             className="inline-flex items-center gap-2 px-8 py-4 bg-orange-600 text-white font-bold text-base rounded-xl hover:bg-orange-700 transition-all hover:shadow-lg hover:shadow-orange-600/30 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-green-700"
           >
-            Book Your Free Strategy Call
+            Get Started
           </a>
         </div>
       </div>

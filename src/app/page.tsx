@@ -3,7 +3,6 @@ import Hero from "@/components/Hero";
 import Problem from "@/components/Problem";
 import Guide from "@/components/Guide";
 import ProvenProcess from "@/components/ProvenProcess";
-import TransitionalCTA from "@/components/TransitionalCTA";
 import SuccessVision from "@/components/SuccessVision";
 import Testimonials from "@/components/Testimonials";
 import Stakes from "@/components/Stakes";
@@ -19,7 +18,6 @@ export default function HomePage() {
         <Problem />
         <Guide />
         <ProvenProcess />
-        <TransitionalCTA />
         <SuccessVision />
         <Testimonials />
         <Stakes />
@@ -36,7 +34,7 @@ export default function HomePage() {
               </h2>
               <p className="text-slate-600">
                 Tell us about your business. We&apos;ll tell you exactly what&apos;s
-                holding your growth back â€” and how to fix it.
+                holding your growth back — and how to fix it.
               </p>
             </div>
             <ContactForm />

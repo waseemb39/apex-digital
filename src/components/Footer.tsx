@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-const BOOK_CALL_LINK = "#contact";
+const GET_STARTED_LINK = "/get-started";
 
 const serviceLinks = [
   { label: "SEO", href: "/services" },
@@ -14,7 +14,7 @@ const serviceLinks = [
 const companyLinks = [
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
-  { label: "Client Portal", href: "/portal" },
+  { label: "Login", href: "/portal" },
   { label: "Privacy Policy", href: "/privacy" },
 ];
 
@@ -39,10 +39,10 @@ export default function Footer() {
             clear plan for getting more leads.
           </p>
           <a
-            href={BOOK_CALL_LINK}
+            href={GET_STARTED_LINK}
             className="inline-flex items-center gap-2 px-8 py-4 bg-orange-600 text-white font-bold rounded-xl hover:bg-orange-700 transition-all hover:shadow-lg hover:shadow-orange-600/25 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-slate-950"
           >
-            Book Your Free Strategy Call
+            Get Started
             <ArrowRight size={18} />
           </a>
         </div>

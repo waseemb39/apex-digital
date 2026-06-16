@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
-const BOOK_CALL_LINK = "#contact";
+const GET_STARTED_LINK = "/get-started";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -53,27 +53,17 @@ export default function Navbar() {
               About
             </Link>
             <Link href="/portal" className={`transition-colors hover:text-green-400 ${scrolled ? "text-slate-600" : "text-slate-300"}`}>
-              Client Portal
+              Login
             </Link>
           </div>
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <Link
-              href="/get-started"
-              className={`inline-flex items-center px-4 py-2 border text-sm font-semibold rounded-lg transition-all ${
-                scrolled
-                  ? "border-green-600 text-green-600 hover:bg-green-50"
-                  : "border-green-400/50 text-green-400 hover:border-green-400 hover:bg-green-400/10"
-              }`}
-            >
-              Get Started
-            </Link>
             <a
-              href={BOOK_CALL_LINK}
+              href={GET_STARTED_LINK}
               className="inline-flex items-center px-5 py-2 bg-orange-600 text-white text-sm font-semibold rounded-lg hover:bg-orange-700 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
             >
-              Book a Free Call
+              Get Started
             </a>
           </div>
 
@@ -98,20 +88,17 @@ export default function Navbar() {
             About
           </Link>
           <Link href="/portal" className="text-slate-300 font-medium hover:text-white" onClick={() => setMenuOpen(false)}>
-            Client Portal
-          </Link>
-          <Link href="/get-started" className="text-green-400 font-semibold" onClick={() => setMenuOpen(false)}>
-            Get Started
+            Login
           </Link>
           <Link href="/contact" className="text-slate-300 font-medium hover:text-white" onClick={() => setMenuOpen(false)}>
             Contact
           </Link>
           <a
-            href={BOOK_CALL_LINK}
+            href={GET_STARTED_LINK}
             className="inline-flex justify-center items-center px-5 py-3 bg-orange-600 text-white font-semibold rounded-lg hover:bg-orange-700 transition-colors"
             onClick={() => setMenuOpen(false)}
           >
-            Book a Free Strategy Call
+            Get Started
           </a>
         </div>
       )}

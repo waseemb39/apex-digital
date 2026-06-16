@@ -1,4 +1,4 @@
-﻿// Owner: Website Owner | Purpose: Direct CTA booking form â€” name, email, phone, message, submit
+﻿// Owner: Website Owner | Purpose: Direct CTA booking form — name, email, phone, message, submit
 "use client";
 
 import { useState } from "react";
@@ -21,7 +21,7 @@ export default function ContactForm() {
   if (submitted) {
     return (
       <div className="bg-green-50 border border-green-200 rounded-xl p-8 text-center">
-        <div className="text-4xl mb-4">âœ…</div>
+        <div className="text-4xl mb-4">✅</div>
         <h3 className="text-xl font-bold text-green-800 mb-2">You&apos;re booked in!</h3>
         <p className="text-green-700">
           We&apos;ll be in touch within 1 business day to confirm your strategy call time.

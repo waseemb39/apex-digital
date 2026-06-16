@@ -1,14 +1,14 @@
-﻿// Owner: Website Owner | Purpose: First-time client intake wizard â€” 5 steps, saves to localStorage
+// Owner: Website Owner | Purpose: First-time client intake wizard — 4 steps, saves to localStorage
 "use client";
 
 import { useState } from "react";
 
-// â”€â”€â”€ Service definitions with branched questions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// --- Service definitions with branched questions ---
 const SERVICES = [
   {
     id: "seo",
     label: "SEO Campaign",
-    icon: "ðŸ”",
+    icon: "🔍",
     tagline: "Rank higher on Google and get consistent organic traffic",
     color: "blue",
     questions: [
@@ -19,8 +19,8 @@ const SERVICES = [
       { id: "previous", label: "Have you done SEO before?", type: "radio",
         options: ["Yes, with an agency", "Yes, in-house", "No, this is our first time"] },
       { id: "tools", label: "Do you have Google Analytics & Search Console?", type: "radio",
-        options: ["Yes, both are set up", "Only one of them", "Neither â€” need to set up"] },
-      { id: "competitors", label: "Name 1â€“3 competitors currently outranking you", type: "text",
+        options: ["Yes, both are set up", "Only one of them", "Neither — need to set up"] },
+      { id: "competitors", label: "Name 1–3 competitors currently outranking you", type: "text",
         placeholder: "e.g. competitor.com, another-rival.com..." },
       { id: "timeline", label: "What's your expected timeline for results?", type: "radio",
         options: ["3 months", "6 months", "12 months", "I'm flexible"] },
@@ -29,7 +29,7 @@ const SERVICES = [
   {
     id: "ppc",
     label: "PPC Advertising",
-    icon: "ðŸ’°",
+    icon: "💰",
     tagline: "More qualified leads from paid ad campaigns",
     color: "red",
     questions: [
@@ -38,7 +38,7 @@ const SERVICES = [
       { id: "platforms", label: "Which platforms are you interested in?", type: "checkbox",
         options: ["Google Search", "Google Display / Shopping", "Meta (Facebook/Instagram)", "Microsoft Ads"] },
       { id: "audience", label: "Describe your ideal customer", type: "text",
-        placeholder: "e.g. homeowners aged 35â€“55 in Manchester, interested in home renovation" },
+        placeholder: "e.g. homeowners aged 35–55 in Manchester, interested in home renovation" },
       { id: "previous", label: "Have you run paid ads before?", type: "radio",
         options: ["Yes, with good results", "Yes, but results were poor", "Never run paid ads"] },
       { id: "landing_page", label: "Do you have a dedicated landing page?", type: "radio",
@@ -48,19 +48,19 @@ const SERVICES = [
   {
     id: "web",
     label: "Website Build",
-    icon: "ðŸ–¥ï¸",
+    icon: "🖥️",
     tagline: "A professional website that converts visitors into clients",
     color: "yellow",
     questions: [
       { id: "type", label: "What type of project is this?", type: "radio",
         options: ["Brand new website", "Redesign of existing site", "Add pages to current site", "E-commerce store"] },
       { id: "pages", label: "How many pages do you need roughly?", type: "radio",
-        options: ["1â€“3 pages (landing page)", "4â€“8 pages (standard site)", "9â€“15 pages (large site)", "15+ pages"] },
+        options: ["1–3 pages (landing page)", "4–8 pages (standard site)", "9–15 pages (large site)", "15+ pages"] },
       { id: "cms", label: "Any CMS preference?", type: "radio",
         options: ["WordPress", "Shopify (e-commerce)", "Next.js / custom build", "No preference"] },
       { id: "brand", label: "Do you have brand assets ready?", type: "radio",
-        options: ["Yes â€” logo, colors, and fonts all ready", "Logo only", "Nothing yet â€” need full branding"] },
-      { id: "inspiration", label: "Share 1â€“3 sites you love the look of", type: "text",
+        options: ["Yes — logo, colors, and fonts all ready", "Logo only", "Nothing yet — need full branding"] },
+      { id: "inspiration", label: "Share 1–3 sites you love the look of", type: "text",
         placeholder: "e.g. apple.com, stripe.com, linear.app" },
       { id: "features", label: "Special features needed?", type: "checkbox",
         options: ["Contact / booking form", "E-commerce / payments", "Members-only area", "CRM / chat integration"] },
@@ -69,7 +69,7 @@ const SERVICES = [
   {
     id: "social",
     label: "Social Media",
-    icon: "ðŸ“±",
+    icon: "📱",
     tagline: "Grow your audience and turn followers into paying clients",
     color: "purple",
     questions: [
@@ -82,16 +82,16 @@ const SERVICES = [
       { id: "video", label: "Do you need video content (Reels / TikTok)?", type: "radio",
         options: ["Yes, video is essential", "Static posts only", "Both video and static posts"] },
       { id: "brand", label: "Is your brand kit ready?", type: "radio",
-        options: ["Yes â€” logo, colors, and fonts", "Partially", "Not yet"] },
+        options: ["Yes — logo, colors, and fonts", "Partially", "Not yet"] },
     ],
   },
 ];
 
 const BUDGET_OPTIONS = [
-  "Under Â£500 / month",
-  "Â£500â€“Â£1,500 / month",
-  "Â£1,500â€“Â£5,000 / month",
-  "Â£5,000+ / month",
+  "Under £500 / month",
+  "£500–£1,500 / month",
+  "£1,500–£5,000 / month",
+  "£5,000+ / month",
   "Let's discuss based on goals",
 ];
 
@@ -103,7 +103,7 @@ const HEAR_OPTIONS = [
   "Other",
 ];
 
-// â”€â”€â”€ Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// --- Types ---
 type Answers = Record<string, string | string[]>;
 
 type WizardData = {
@@ -125,7 +125,7 @@ const EMPTY: WizardData = {
   industry: "", service: "", serviceAnswers: {}, budget: "", heardFrom: "", notes: "",
 };
 
-// â”€â”€â”€ Small helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// --- Small helpers ---
 function inputCls(err?: string) {
   return `w-full px-4 py-3 border rounded-lg text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent ${
     err ? "border-red-400 bg-red-50" : "border-slate-300"
@@ -175,7 +175,7 @@ function CheckOption({ checked, onChange, label }: {
       <div className={`w-4 h-4 rounded border-2 flex items-center justify-center flex-shrink-0 ${
         checked ? "border-green-600 bg-green-600" : "border-slate-300"
       }`}>
-        {checked && <span className="text-white text-xs leading-none">âœ“</span>}
+        {checked && <span className="text-white text-xs leading-none">✓</span>}
       </div>
       <input type="checkbox" className="sr-only" checked={checked} onChange={onChange} />
       {label}
@@ -183,7 +183,7 @@ function CheckOption({ checked, onChange, label }: {
   );
 }
 
-// â”€â”€â”€ Main wizard â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// --- Main wizard ---
 export default function OnboardingWizard() {
   const [step, setStep] = useState(1);
   const [data, setData] = useState<WizardData>(EMPTY);
@@ -251,12 +251,12 @@ export default function OnboardingWizard() {
         </div>
       )}
 
-      {/* â”€â”€ STEP 1: Contact info â”€â”€ */}
+      {/* STEP 1: Contact info */}
       {step === 1 && (
         <div className="space-y-6">
           <div>
             <h2 className="text-2xl font-bold text-slate-900 mb-1">Let&apos;s get to know your business</h2>
-            <p className="text-slate-500 text-sm">Takes about 3 minutes. We use this to prepare before your strategy call.</p>
+            <p className="text-slate-500 text-sm">Takes about 3 minutes. We&apos;ll use your answers to prepare a custom strategy for you.</p>
           </div>
           <div className="grid sm:grid-cols-2 gap-5">
             <Field label="Your Full Name" required error={errors.name}>
@@ -282,14 +282,14 @@ export default function OnboardingWizard() {
             <input type="text" value={data.businessName} onChange={(e) => set("businessName", e.target.value)}
               className={inputCls(errors.businessName)} placeholder="Your Business Ltd" />
           </Field>
-          <Field label="Current Website URL">
+          <Field label="Current Website (if you have one)">
             <input type="url" value={data.website} onChange={(e) => set("website", e.target.value)}
               className={inputCls()} placeholder="https://yourbusiness.com" />
           </Field>
         </div>
       )}
 
-      {/* â”€â”€ STEP 2: Goal / service selection â”€â”€ */}
+      {/* STEP 2: Goal / service selection */}
       {step === 2 && (
         <div className="space-y-6">
           <div>
@@ -313,7 +313,7 @@ export default function OnboardingWizard() {
                 <div className="font-bold text-slate-900 text-sm mb-1">{svc.label}</div>
                 <div className="text-xs text-slate-500 leading-relaxed">{svc.tagline}</div>
                 {data.service === svc.id && (
-                  <div className="mt-3 text-xs font-bold text-green-600">âœ“ Selected</div>
+                  <div className="mt-3 text-xs font-bold text-green-600">✓ Selected</div>
                 )}
               </button>
             ))}
@@ -321,7 +321,7 @@ export default function OnboardingWizard() {
         </div>
       )}
 
-      {/* â”€â”€ STEP 3: Service questions â”€â”€ */}
+      {/* STEP 3: Service questions */}
       {step === 3 && selected && (
         <div className="space-y-8">
           <div>
@@ -365,12 +365,12 @@ export default function OnboardingWizard() {
         </div>
       )}
 
-      {/* â”€â”€ STEP 4: Budget â”€â”€ */}
+      {/* STEP 4: Budget */}
       {step === 4 && (
         <div className="space-y-8">
           <div>
-            <h2 className="text-2xl font-bold text-slate-900 mb-1">Almost done â€” budget & notes</h2>
-            <p className="text-slate-500 text-sm">This helps us prepare a relevant proposal before your call.</p>
+            <h2 className="text-2xl font-bold text-slate-900 mb-1">Almost done — budget & notes</h2>
+            <p className="text-slate-500 text-sm">This helps us prepare a relevant proposal for you.</p>
           </div>
 
           <div>
@@ -406,10 +406,10 @@ export default function OnboardingWizard() {
         </div>
       )}
 
-      {/* â”€â”€ STEP 5: Success â”€â”€ */}
+      {/* STEP 5: Success */}
       {step === 5 && (
         <div className="text-center py-8">
-          <div className="text-6xl mb-6">ðŸŽ‰</div>
+          <div className="text-6xl mb-6">🎉</div>
           <h2 className="text-3xl font-bold text-slate-900 mb-3">
             You&apos;re all set, {data.name.split(" ")[0]}!
           </h2>
@@ -419,16 +419,16 @@ export default function OnboardingWizard() {
           <div className="bg-green-50 border border-green-200 rounded-xl p-5 mb-8 text-left max-w-sm mx-auto mt-6">
             <p className="text-sm font-bold text-green-800 mb-2">What happens next:</p>
             <ul className="text-sm text-green-700 space-y-1.5">
-              <li>âœ“ We review your intake answers</li>
-              <li>âœ“ We prepare a custom strategy outline</li>
-              <li>âœ“ We confirm your 30-min call time by email</li>
+              <li>✓ We review your intake answers</li>
+              <li>✓ We prepare a custom strategy outline</li>
+              <li>✓ We confirm your 30-min call time by email</li>
             </ul>
           </div>
           <a
             href="/portal"
             className="inline-flex items-center px-7 py-3.5 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition-colors text-sm"
           >
-            Access Your Client Portal â†’
+            Access Your Client Portal →
           </a>
           <p className="mt-4 text-xs text-slate-400">
             Use your portal to complete the detailed department questionnaire before your call.
@@ -442,18 +442,18 @@ export default function OnboardingWizard() {
           {step > 1 && (
             <button onClick={back}
               className="flex-1 py-3 border border-slate-300 rounded-lg text-slate-600 font-semibold text-sm hover:bg-slate-50 transition-colors">
-              â† Back
+              ← Back
             </button>
           )}
           {step < 4 ? (
             <button onClick={next}
               className="flex-1 py-3 bg-green-600 text-white font-bold text-sm rounded-lg hover:bg-green-700 transition-colors">
-              Continue â†’
+              Continue →
             </button>
           ) : (
             <button onClick={finish}
               className="flex-1 py-3 bg-orange-600 text-white font-bold text-sm rounded-lg hover:bg-orange-700 transition-colors">
-              Submit & Book My Call â†’
+              Submit & Book My Call →
             </button>
           )}
         </div>
@@ -461,4 +461,3 @@ export default function OnboardingWizard() {
     </div>
   );
 }
-

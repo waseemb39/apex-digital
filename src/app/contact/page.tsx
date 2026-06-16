@@ -4,7 +4,7 @@ import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Book a Free Strategy Call â€” Graft Digital",
+  title: "Book a Free Strategy Call — Graft Digital",
   description:
     "Book a free 30-minute strategy call. We'll diagnose what's holding your lead generation back and give you a clear plan.",
 };
@@ -21,7 +21,7 @@ export default function ContactPage() {
             </h1>
             <p className="text-slate-300 text-lg">
               30 minutes. No pitch. Just a clear picture of what&apos;s holding your
-              growth back â€” and how to fix it.
+              growth back — and how to fix it.
             </p>
           </div>
         </section>
