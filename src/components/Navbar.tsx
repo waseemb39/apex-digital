@@ -49,6 +49,9 @@ export default function Navbar() {
             <Link href="/services" className={`transition-colors hover:text-green-400 ${scrolled ? "text-slate-600" : "text-slate-300"}`}>
               Services
             </Link>
+            <Link href="/products" className={`transition-colors hover:text-green-400 ${scrolled ? "text-slate-600" : "text-slate-300"}`}>
+              Products
+            </Link>
             <Link href="/about" className={`transition-colors hover:text-green-400 ${scrolled ? "text-slate-600" : "text-slate-300"}`}>
               About
             </Link>
@@ -83,6 +86,9 @@ export default function Navbar() {
         <div className="md:hidden bg-slate-950/95 backdrop-blur-md border-t border-slate-800 px-4 py-5 flex flex-col gap-4">
           <Link href="/services" className="text-slate-300 font-medium hover:text-white" onClick={() => setMenuOpen(false)}>
             Services
+          </Link>
+          <Link href="/products" className="text-slate-300 font-medium hover:text-white" onClick={() => setMenuOpen(false)}>
+            Products
           </Link>
           <Link href="/about" className="text-slate-300 font-medium hover:text-white" onClick={() => setMenuOpen(false)}>
             About
