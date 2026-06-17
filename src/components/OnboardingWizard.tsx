@@ -2,97 +2,57 @@
 "use client";
 
 import { useState } from "react";
+import {
+  Zap,
+  Building2,
+  ShoppingBag,
+  CalendarCheck,
+  BookOpen,
+  Sparkles,
+  LucideProps,
+} from "lucide-react";
+import { products } from "@/data/products";
 
-// --- Service definitions with branched questions ---
-const SERVICES = [
-  {
-    id: "seo",
-    label: "SEO Campaign",
-    icon: "🔍",
-    tagline: "Rank higher on Google and get consistent organic traffic",
-    color: "blue",
-    questions: [
-      { id: "goal", label: "What's your main SEO goal?", type: "radio",
-        options: ["Rank for specific keywords", "Increase organic traffic", "Outrank a specific competitor", "All of the above"] },
-      { id: "keywords", label: "List your 3 most important target keywords or phrases", type: "text",
-        placeholder: "e.g. plumber London, emergency boiler repair..." },
-      { id: "previous", label: "Have you done SEO before?", type: "radio",
-        options: ["Yes, with an agency", "Yes, in-house", "No, this is our first time"] },
-      { id: "tools", label: "Do you have Google Analytics & Search Console?", type: "radio",
-        options: ["Yes, both are set up", "Only one of them", "Neither — need to set up"] },
-      { id: "competitors", label: "Name 1–3 competitors currently outranking you", type: "text",
-        placeholder: "e.g. competitor.com, another-rival.com..." },
-      { id: "timeline", label: "What's your expected timeline for results?", type: "radio",
-        options: ["3 months", "6 months", "12 months", "I'm flexible"] },
-    ],
-  },
-  {
-    id: "ppc",
-    label: "PPC Advertising",
-    icon: "💰",
-    tagline: "More qualified leads from paid ad campaigns",
-    color: "red",
-    questions: [
-      { id: "goal", label: "What's your primary advertising goal?", type: "radio",
-        options: ["Generate leads / form fills", "Drive phone calls", "Drive online sales", "Increase brand awareness"] },
-      { id: "platforms", label: "Which platforms are you interested in?", type: "checkbox",
-        options: ["Google Search", "Google Display / Shopping", "Meta (Facebook/Instagram)", "Microsoft Ads"] },
-      { id: "audience", label: "Describe your ideal customer", type: "text",
-        placeholder: "e.g. homeowners aged 35–55 in Manchester, interested in home renovation" },
-      { id: "previous", label: "Have you run paid ads before?", type: "radio",
-        options: ["Yes, with good results", "Yes, but results were poor", "Never run paid ads"] },
-      { id: "landing_page", label: "Do you have a dedicated landing page?", type: "radio",
-        options: ["Yes, ready to use", "I need one built", "I'll use my homepage for now"] },
-    ],
-  },
-  {
-    id: "web",
-    label: "Website Build",
-    icon: "🖥️",
-    tagline: "A professional website that converts visitors into clients",
-    color: "yellow",
-    questions: [
-      { id: "type", label: "What type of project is this?", type: "radio",
-        options: ["Brand new website", "Redesign of existing site", "Add pages to current site", "E-commerce store"] },
-      { id: "pages", label: "How many pages do you need roughly?", type: "radio",
-        options: ["1–3 pages (landing page)", "4–8 pages (standard site)", "9–15 pages (large site)", "15+ pages"] },
-      { id: "cms", label: "Any CMS preference?", type: "radio",
-        options: ["WordPress", "Shopify (e-commerce)", "Next.js / custom build", "No preference"] },
-      { id: "brand", label: "Do you have brand assets ready?", type: "radio",
-        options: ["Yes — logo, colors, and fonts all ready", "Logo only", "Nothing yet — need full branding"] },
-      { id: "inspiration", label: "Share 1–3 sites you love the look of", type: "text",
-        placeholder: "e.g. apple.com, stripe.com, linear.app" },
-      { id: "features", label: "Special features needed?", type: "checkbox",
-        options: ["Contact / booking form", "E-commerce / payments", "Members-only area", "CRM / chat integration"] },
-    ],
-  },
-  {
-    id: "social",
-    label: "Social Media",
-    icon: "📱",
-    tagline: "Grow your audience and turn followers into paying clients",
-    color: "purple",
-    questions: [
-      { id: "platforms", label: "Which platforms?", type: "checkbox",
-        options: ["Instagram", "TikTok", "Facebook", "LinkedIn"] },
-      { id: "goal", label: "What's your main social media goal?", type: "radio",
-        options: ["Grow followers", "Drive traffic to website", "Generate leads", "Build brand awareness"] },
-      { id: "current", label: "How active are you on social media now?", type: "radio",
-        options: ["Posting regularly", "Posting occasionally", "Have accounts but rarely post", "No accounts yet"] },
-      { id: "video", label: "Do you need video content (Reels / TikTok)?", type: "radio",
-        options: ["Yes, video is essential", "Static posts only", "Both video and static posts"] },
-      { id: "brand", label: "Is your brand kit ready?", type: "radio",
-        options: ["Yes — logo, colors, and fonts", "Partially", "Not yet"] },
-    ],
-  },
+const ICON_MAP: Record<string, React.ComponentType<LucideProps>> = {
+  Zap, Building2, ShoppingBag, CalendarCheck, BookOpen, Sparkles,
+};
+
+const PAGE_OPTIONS = ["1–3", "4–8", "9–15", "15+", "Not sure yet"];
+
+const ADDON_OPTIONS = [
+  "Custom design (not a template)",
+  "E-commerce / online payments",
+  "Online booking or scheduling",
+  "Blog / CMS",
+  "User accounts or login area",
+  "Admin dashboard",
+  "Multi-language support",
+  "Copywriting / content creation",
+  "Custom animations / interactions",
+  "Third-party integrations (CRM, API, etc.)",
+  "SEO setup",
+  "Logo / branding",
 ];
 
-const BUDGET_OPTIONS = [
-  "Under £500 / month",
-  "£500–£1,500 / month",
-  "£1,500–£5,000 / month",
-  "£5,000+ / month",
-  "Let's discuss based on goals",
+const MARKETING_OPTIONS = [
+  {
+    id: "discuss",
+    label: "Let's discuss what's best for my business",
+    description: "We'll review your goals and recommend the right mix of services.",
+    recommended: true,
+  },
+  {
+    id: "package",
+    label: "A marketing package (SEO + Ads + Social — ongoing growth)",
+    description: "Full digital marketing running alongside your new website.",
+    recommended: false,
+  },
+  {
+    id: "website-only",
+    label: "Just the website for now — no marketing package",
+    description: "Build the website first, add marketing later when you're ready.",
+    recommended: false,
+  },
 ];
 
 const HEAR_OPTIONS = [
@@ -104,7 +64,7 @@ const HEAR_OPTIONS = [
 ];
 
 // --- Types ---
-type Answers = Record<string, string | string[]>;
+type Scope = { pages: string; addons: string[] };
 
 type WizardData = {
   name: string;
@@ -113,17 +73,20 @@ type WizardData = {
   businessName: string;
   website: string;
   industry: string;
-  service: string;
-  serviceAnswers: Answers;
-  budget: string;
+  websiteType: string;
+  scope: Scope;
+  marketingPackage: string;
   heardFrom: string;
   notes: string;
 };
 
 const EMPTY: WizardData = {
   name: "", email: "", phone: "", businessName: "", website: "",
-  industry: "", service: "", serviceAnswers: {}, budget: "", heardFrom: "", notes: "",
+  industry: "", websiteType: "", scope: { pages: "", addons: [] },
+  marketingPackage: "", heardFrom: "", notes: "",
 };
+
+type StringFields = Exclude<keyof WizardData, "scope">;
 
 // --- Small helpers ---
 function inputCls(err?: string) {
@@ -190,20 +153,19 @@ export default function OnboardingWizard() {
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const TOTAL = 5;
-  const selected = SERVICES.find((s) => s.id === data.service);
 
-  function set(field: keyof WizardData, val: string) {
+  function set(field: StringFields, val: string) {
     setData((p) => ({ ...p, [field]: val }));
     setErrors((p) => ({ ...p, [field]: "" }));
   }
 
-  function setAnswer(id: string, val: string | string[]) {
-    setData((p) => ({ ...p, serviceAnswers: { ...p.serviceAnswers, [id]: val } }));
+  function setScope(field: keyof Scope, val: string | string[]) {
+    setData((p) => ({ ...p, scope: { ...p.scope, [field]: val } }));
   }
 
-  function toggle(id: string, opt: string) {
-    const cur = (data.serviceAnswers[id] as string[]) ?? [];
-    setAnswer(id, cur.includes(opt) ? cur.filter((v) => v !== opt) : [...cur, opt]);
+  function toggleAddon(opt: string) {
+    const cur = data.scope.addons;
+    setScope("addons", cur.includes(opt) ? cur.filter((v) => v !== opt) : [...cur, opt]);
   }
 
   function validate(): boolean {
@@ -213,7 +175,7 @@ export default function OnboardingWizard() {
       if (!data.email.trim()) e.email = "Required";
       if (!data.businessName.trim()) e.businessName = "Required";
     }
-    if (step === 2 && !data.service) e.service = "Please select a service to continue";
+    if (step === 2 && !data.websiteType) e.websiteType = "Please select a website type to continue";
     setErrors(e);
     return Object.keys(e).length === 0;
   }
@@ -289,99 +251,126 @@ export default function OnboardingWizard() {
         </div>
       )}
 
-      {/* STEP 2: Goal / service selection */}
+      {/* STEP 2: Website type */}
       {step === 2 && (
         <div className="space-y-6">
           <div>
-            <h2 className="text-2xl font-bold text-slate-900 mb-1">What&apos;s your biggest goal right now?</h2>
-            <p className="text-slate-500 text-sm">Select the service that matches your primary objective. You can add more later.</p>
+            <h2 className="text-2xl font-bold text-slate-900 mb-1">What type of website do you need?</h2>
+            <p className="text-slate-500 text-sm">Pick the option closest to what you have in mind — we&apos;ll refine the details together.</p>
           </div>
-          {errors.service && <p className="text-red-500 text-sm">{errors.service}</p>}
+          {errors.websiteType && <p className="text-red-500 text-sm">{errors.websiteType}</p>}
           <div className="grid sm:grid-cols-2 gap-4">
-            {SERVICES.map((svc) => (
-              <button
-                key={svc.id}
-                type="button"
-                onClick={() => set("service", svc.id)}
-                className={`text-left p-5 rounded-xl border-2 transition-all ${
-                  data.service === svc.id
-                    ? "border-green-600 bg-green-50 shadow-sm"
-                    : "border-slate-200 bg-white hover:border-green-200"
-                }`}
-              >
-                <div className="text-3xl mb-3">{svc.icon}</div>
-                <div className="font-bold text-slate-900 text-sm mb-1">{svc.label}</div>
-                <div className="text-xs text-slate-500 leading-relaxed">{svc.tagline}</div>
-                {data.service === svc.id && (
-                  <div className="mt-3 text-xs font-bold text-green-600">✓ Selected</div>
-                )}
-              </button>
-            ))}
+            {products.map((product) => {
+              const Icon = ICON_MAP[product.icon] ?? Zap;
+              const isSelected = data.websiteType === product.slug;
+              return (
+                <button
+                  key={product.slug}
+                  type="button"
+                  onClick={() => set("websiteType", product.slug)}
+                  className={`text-left p-5 rounded-xl border-2 transition-all ${
+                    isSelected
+                      ? "border-green-600 bg-green-50 shadow-sm"
+                      : "border-slate-200 bg-white hover:border-green-200"
+                  }`}
+                >
+                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center mb-3 transition-colors ${
+                    isSelected ? "bg-green-600 text-white" : "bg-slate-100 text-slate-600"
+                  }`}>
+                    <Icon size={20} strokeWidth={1.75} />
+                  </div>
+                  <div className="font-bold text-slate-900 text-sm mb-1">{product.name}</div>
+                  <div className="text-xs text-slate-500 leading-relaxed">{product.tagline}</div>
+                  {isSelected && (
+                    <div className="mt-3 text-xs font-bold text-green-600">✓ Selected</div>
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
       )}
 
-      {/* STEP 3: Service questions */}
-      {step === 3 && selected && (
+      {/* STEP 3: Scope factors */}
+      {step === 3 && (
         <div className="space-y-8">
           <div>
-            <h2 className="text-2xl font-bold text-slate-900 mb-1">Tell us about your {selected.label} goals</h2>
-            <p className="text-slate-500 text-sm">A few quick questions so our team can prepare the right strategy.</p>
+            <h2 className="text-2xl font-bold text-slate-900 mb-1">What should your website include?</h2>
+            <p className="text-slate-500 text-sm">Select everything you think you&apos;ll need — this helps us estimate timeline and effort accurately.</p>
           </div>
-          {selected.questions.map((q, i) => (
-            <div key={q.id}>
-              <p className="text-sm font-semibold text-slate-800 mb-3">
-                {i + 1}. {q.label}
-              </p>
-              {q.type === "text" && (
-                <textarea
-                  value={(data.serviceAnswers[q.id] as string) ?? ""}
-                  onChange={(e) => setAnswer(q.id, e.target.value)}
-                  rows={2}
-                  placeholder={q.placeholder}
-                  className="w-full px-4 py-3 border border-slate-300 rounded-lg text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 resize-none"
-                />
-              )}
-              {q.type === "radio" && (
-                <div className="space-y-2">
-                  {q.options!.map((opt) => (
-                    <RadioOption key={opt} name={q.id} value={opt}
-                      checked={data.serviceAnswers[q.id] === opt}
-                      onChange={() => setAnswer(q.id, opt)} label={opt} />
-                  ))}
-                </div>
-              )}
-              {q.type === "checkbox" && (
-                <div className="space-y-2">
-                  {q.options!.map((opt) => (
-                    <CheckOption key={opt}
-                      checked={((data.serviceAnswers[q.id] as string[]) ?? []).includes(opt)}
-                      onChange={() => toggle(q.id, opt)} label={opt} />
-                  ))}
-                </div>
-              )}
+
+          <div>
+            <p className="text-sm font-semibold text-slate-800 mb-3">Roughly how many pages?</p>
+            <div className="space-y-2">
+              {PAGE_OPTIONS.map((opt) => (
+                <RadioOption key={opt} name="pages" value={opt}
+                  checked={data.scope.pages === opt}
+                  onChange={() => setScope("pages", opt)} label={opt} />
+              ))}
             </div>
-          ))}
+          </div>
+
+          <div>
+            <p className="text-sm font-semibold text-slate-800 mb-3">What else should it include? <span className="font-normal text-slate-400">(select all that apply)</span></p>
+            <div className="grid sm:grid-cols-2 gap-2">
+              {ADDON_OPTIONS.map((opt) => (
+                <CheckOption key={opt}
+                  checked={data.scope.addons.includes(opt)}
+                  onChange={() => toggleAddon(opt)} label={opt} />
+              ))}
+            </div>
+          </div>
         </div>
       )}
 
-      {/* STEP 4: Budget */}
+      {/* STEP 4: Marketing package + notes */}
       {step === 4 && (
         <div className="space-y-8">
           <div>
-            <h2 className="text-2xl font-bold text-slate-900 mb-1">Almost done — budget & notes</h2>
-            <p className="text-slate-500 text-sm">This helps us prepare a relevant proposal for you.</p>
+            <h2 className="text-2xl font-bold text-slate-900 mb-1">Do you want help with digital marketing?</h2>
+            <p className="text-slate-500 text-sm">Beyond the website itself — choose what fits, or let us advise you.</p>
           </div>
 
-          <div>
-            <p className="text-sm font-semibold text-slate-800 mb-3">What&apos;s your monthly budget range?</p>
-            <div className="space-y-2">
-              {BUDGET_OPTIONS.map((opt) => (
-                <RadioOption key={opt} name="budget" value={opt}
-                  checked={data.budget === opt}
-                  onChange={() => set("budget", opt)} label={opt} />
-              ))}
-            </div>
+          <div className="space-y-3">
+            {MARKETING_OPTIONS.map((opt) => {
+              const isSelected = data.marketingPackage === opt.id;
+              return (
+                <button
+                  key={opt.id}
+                  type="button"
+                  onClick={() => set("marketingPackage", opt.id)}
+                  className={`w-full text-left p-5 rounded-xl border-2 transition-all relative ${
+                    opt.recommended
+                      ? isSelected
+                        ? "border-green-600 bg-green-50 shadow-sm"
+                        : "border-green-400 bg-green-50/40 hover:border-green-500"
+                      : isSelected
+                        ? "border-green-600 bg-green-50 shadow-sm"
+                        : "border-slate-200 bg-white hover:border-green-200"
+                  }`}
+                >
+                  {opt.recommended && (
+                    <span className="absolute top-3 right-3 px-2 py-0.5 bg-green-700 text-white text-xs font-bold rounded-full">
+                      Recommended
+                    </span>
+                  )}
+                  <div className="flex items-start gap-3 pr-24">
+                    <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0 mt-0.5 ${
+                      isSelected ? "border-green-600" : opt.recommended ? "border-green-500" : "border-slate-300"
+                    }`}>
+                      {isSelected && <div className="w-2 h-2 rounded-full bg-green-600" />}
+                    </div>
+                    <div>
+                      <div className="font-bold text-slate-900 text-sm mb-1">{opt.label}</div>
+                      <div className="text-xs text-slate-500 leading-relaxed">{opt.description}</div>
+                    </div>
+                  </div>
+                  {isSelected && (
+                    <div className="mt-2 ml-7 text-xs font-bold text-green-600">✓ Selected</div>
+                  )}
+                </button>
+              );
+            })}
           </div>
 
           <div>
@@ -431,7 +420,7 @@ export default function OnboardingWizard() {
             Access Your Client Portal →
           </a>
           <p className="mt-4 text-xs text-slate-400">
-            Use your portal to complete the detailed department questionnaire before your call.
+            Use your portal to complete the detailed onboarding questionnaire before your call.
           </p>
         </div>
       )}

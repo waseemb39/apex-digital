@@ -228,7 +228,7 @@ type Profile = {
   name: string;
   email: string;
   businessName: string;
-  service: string;
+  websiteType: string;
   completedAt: string;
 };
 
@@ -411,7 +411,7 @@ export default function CustomerPortal() {
     }
   }, []);
 
-  const departments = profile ? (DEPARTMENTS[profile.service] ?? []) : [];
+  const departments = profile ? (DEPARTMENTS[profile.websiteType] ?? DEPARTMENTS["web"] ?? []) : [];
   const dept = departments[activeDept];
 
   const completedCount = savedDepts.size;
@@ -470,8 +470,13 @@ export default function CustomerPortal() {
     );
   }
 
-  const SERVICE_LABELS: Record<string, string> = {
-    seo: "SEO Campaign", ppc: "PPC Advertising", web: "Website Build", social: "Social Media",
+  const WEBSITE_TYPE_LABELS: Record<string, string> = {
+    "landing-page": "Landing Page",
+    "company-website": "Company Website",
+    "online-shop": "Online Shop",
+    "online-booking": "Online Booking Service",
+    "blog-website": "Blog Website",
+    "custom-website": "Unique / Custom Website",
   };
 
   return (
@@ -505,7 +510,7 @@ export default function CustomerPortal() {
         {/* Service badge */}
         <div className="inline-flex items-center gap-2 bg-slate-800 border border-slate-700 rounded-full px-4 py-2 text-sm mb-8">
           <span className="w-2 h-2 rounded-full bg-green-400" />
-          <span className="text-slate-300 font-medium">Service: <strong className="text-white">{SERVICE_LABELS[profile.service]}</strong></span>
+          <span className="text-slate-300 font-medium">Website type: <strong className="text-white">{WEBSITE_TYPE_LABELS[profile.websiteType] ?? profile.websiteType}</strong></span>
           <span className="text-slate-500">·</span>
           <span className="text-slate-400">{completedCount}/{totalDepts} departments complete</span>
         </div>
