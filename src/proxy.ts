@@ -79,8 +79,13 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
+  // Only run on routes that require authentication.
+  // Public marketing pages are never touched by this proxy.
   matcher: [
-    // Run on all paths except Next.js internals and static files.
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+    "/admin/:path*",
+    "/portal/:path*",
+    "/login",
+    "/auth/:path*",
+    "/api/admin/:path*",
   ],
 };

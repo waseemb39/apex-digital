@@ -470,14 +470,8 @@ export default function CustomerPortal() {
     );
   }
 
-  const WEBSITE_TYPE_LABELS: Record<string, string> = {
-    "landing-page": "Landing Page",
-    "company-website": "Company Website",
-    "online-shop": "Online Shop",
-    "online-booking": "Online Booking Service",
-    "blog-website": "Blog Website",
-    "custom-website": "Unique / Custom Website",
-  };
+  // websiteType is now stored as display text (e.g. "Landing page") — no mapping needed.
+  const WEBSITE_TYPE_LABELS: Record<string, string> = {};
 
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100">
