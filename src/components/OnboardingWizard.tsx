@@ -10,9 +10,7 @@ const WEBSITE_TYPES = [
   "Online booking service",
   "Blog website",
   "Portfolio website",
-  "Website redesign",
   "Unique / custom website",
-  "Not sure yet",
 ];
 
 const MAIN_GOAL_OPTIONS = [
